@@ -1,0 +1,13 @@
+#!/bin/sh
+
+mpd .config/mpd/mpd.conf
+mpDris2 &
+
+# i3-msg append_layout ~/.config/i3/music.json
+
+urxvt -cd /music &
+urxvt -e ncmpcpp &
+urxvt -e ncmpcpp -s clock &
+urxvt -e ncmpcpp -s visualizer &
+urxvt -e cmatrix -b &
+
