@@ -10,8 +10,16 @@ set clipboard=unnamedplus
 
 set colorcolumn=80
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Plugins
 call plug#begin()
+Plug 'junegunn/vim-plug'
+
 Plug 'tpope/vim-sensible' "Sensible
 
 "Pywal colors
@@ -19,10 +27,20 @@ Plug 'dylanaraps/wal.vim'
 
 "Plug 'itchyny/lightline.vim'
 
-Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe'
 Plug 'SirVer/ultisnips'
+Plug 'Valloric/YouCompleteMe'
+Plug 'airblade/vim-gitgutter'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'ervandew/supertab'
+Plug 'honza/vim-snippets'
+Plug 'jreybert/vimagit'
+Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-syntastic/syntastic'
+
+Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
+Plug 'rust-lang/rust.vim', {'for': ['rs', 'rust']}
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -41,6 +59,7 @@ call plug#end()
 
 "Load pywal colors
 colorscheme wal
+let g:airline_theme = 'wal'
 "Lightline pywal colors
 "let g:lightline = {
 "      \ 'colorscheme': 'wal',
