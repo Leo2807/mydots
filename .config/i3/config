@@ -37,6 +37,7 @@ bindsym $mod+Shift+a kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec "rofi -show combi -combi-modi drun,window,run"
+bindsym $mod+Shift+Return exec "i3-sensible-terminal vim ."
 
 # There also is the (new) i3-dmenu-desjtop which only displays applications
 # shipping a .desjtop file. It is a wrapper around dmenu, so you need that
@@ -89,7 +90,6 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+q focus parent
-
 # focus the child container
 #bindsym $mod+d focus child
 
@@ -173,13 +173,19 @@ set $mode_gaps Gaps: Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
-	bindsym equal 			gaps inner current plus 5;	# gaps outer current plus 5	
-	bindsym minus 			gaps inner current minus 5;	# gaps outer current minus 5	
-	bindsym agrave     			gaps inner current set 0;	# gaps outer current set 0	
+	bindsym equal 			gaps inner current plus 5	
+	# gaps outer current plus 5	
+	bindsym minus 			gaps inner current minus 5	
+	# gaps outer current minus 5	
+	bindsym agrave     		gaps inner current set 0	
+	# gaps outer current set 0	
 
-	bindsym Shift+plus  		gaps inner all plus 5;		# gaps outer all plus 5	
-	bindsym Shift+underscore	gaps inner all minus 5;		# gaps outer all minus 5	
-	bindsym Shift+0     		gaps inner all set 0;		# gaps outer all set 0	
+	bindsym Shift+plus  		gaps inner all plus 5		
+	# gaps outer all plus 5	
+	bindsym Shift+underscore	gaps inner all minus 5		
+	# gaps outer all minus 5	
+	bindsym Shift+0     		gaps inner all set 0		
+	# gaps outer all set 0	
 
 	bindsym Return mode "default"
 	bindsym Escape mode "default"
@@ -206,7 +212,7 @@ client.unfocused        $bg     $bg     $fg	$bg		$bg
 client.urgent           $bg     $bg     $fg  	$bg       	$bg
 client.placeholder      $bg     $bg     $fg  	$bg       	$bg
 
-client.background       $bg
+client.background    ~/bin/start-applets.sh
 
 exec --no-startup-id compton -b
 exec --no-startup-id /usr/bin/redshift-gtk
@@ -215,14 +221,16 @@ exec --no-startup-id /usr/bin/redshift-gtk
 for_window [class="^.*"] border pixel 1
 new_window 1pixel
 
-# Set wal colors
-exec_always wal -R
+# Set wpg colors
+exec_always ~/.config/wpg/wp_init.sh
 
 # Lock screen
 bindsym Pause	i3lock-wrapper 
 
-# G A P S !
 bindsym $mod+F12 exec wpg -m
 
-exec_always "sleep 1 && i3-msg gaps inner all set 20"
+# G A P S !
+exec --no-startup-id "sleep 2 && i3-msg gaps inner 20"
+#gaps inner 20
+exec_always "setxkbmap -option caps:super"
 

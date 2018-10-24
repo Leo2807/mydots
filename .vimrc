@@ -38,8 +38,14 @@ Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-syntastic/syntastic'
+Plug 'francoiscabrol/ranger.vim'
 
-Plug 'kovisoft/paredit', { 'for': ['clojure', 'scheme'] }
+Plug 'kovisoft/slimv', { 'for': ['clojure', 'scheme', 'racket', 'rkt'] }
+Plug 'wlangstroth/vim-racket', { 'for': ['racket', 'rkt']}
+let g:slimv_swank_cmd = '!~/p/swank-racket/server.sh'
+let g:syntastic_enable_racket_racket_checker = 1
+let g:slimv_unmap_tab = 1
+let g:paredit_electric_return = 0
 Plug 'rust-lang/rust.vim', {'for': ['rs', 'rust']}
 
 " make YCM compatible with UltiSnips (using supertab)
@@ -53,12 +59,15 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
+" Use ranger when browsing directories
+let g:ranger_replace_netrw = 1
+
 Plug 'dag/vim-fish'
 
 call plug#end()
 
 "Load pywal colors
-colorscheme wal
+"colorscheme wal
 let g:airline_theme = 'wal'
 "Lightline pywal colors
 "let g:lightline = {
