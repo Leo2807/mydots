@@ -36,7 +36,7 @@ font-1 = FontAwesome:style=Regular:size=10;2
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right =  volume wlan battery
+modules-right =  volume battery
 
 tray-position = right
 tray-padding = 10
