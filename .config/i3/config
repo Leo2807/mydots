@@ -31,13 +31,14 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec "i3-sensible-terminal vim ."
 
 # kill focused window
 bindsym $mod+Shift+a kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec "rofi -show combi -combi-modi drun,window,run"
-bindsym $mod+Shift+Return exec "i3-sensible-terminal vim ."
+bindsym $mod+w exec "rofi -show combi -combi-modi window"
 
 # There also is the (new) i3-dmenu-desjtop which only displays applications
 # shipping a .desjtop file. It is a wrapper around dmenu, so you need that
@@ -212,14 +213,14 @@ client.unfocused        $bg     $bg     $fg	$bg		$bg
 client.urgent           $bg     $bg     $fg  	$bg       	$bg
 client.placeholder      $bg     $bg     $fg  	$bg       	$bg
 
-client.background    ~/bin/start-applets.sh
+exec --no-startup-id gnome-session --session=i3
 
 exec --no-startup-id compton -b
-exec --no-startup-id /usr/bin/redshift-gtk
+exec --no-startup-id ~/bin/start-applets.sh
 
 # Borderless windows
-for_window [class="^.*"] border pixel 1
-new_window 1pixel
+for_window [class="^.*"] border pixel 3
+new_window pixel 3
 
 # Set wpg colors
 exec_always ~/.config/wpg/wp_init.sh

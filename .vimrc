@@ -39,20 +39,28 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-syntastic/syntastic'
 Plug 'francoiscabrol/ranger.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'tidalcycles/vim-tidal'
 
-Plug 'kovisoft/slimv', { 'for': ['clojure', 'scheme', 'racket', 'rkt'] }
+Plug 'kovisoft/slimv', { 'for': ['clojure', 'scheme', 'sc', 'racket', 'rkt'] }
 Plug 'wlangstroth/vim-racket', { 'for': ['racket', 'rkt']}
 let g:slimv_swank_cmd = '!~/p/swank-racket/server.sh'
 let g:syntastic_enable_racket_racket_checker = 1
+let g:syntastic_racket_racket_args = "-S ./"
 let g:slimv_unmap_tab = 1
 let g:paredit_electric_return = 0
+let g:paredit_mode = 0
 Plug 'rust-lang/rust.vim', {'for': ['rs', 'rust']}
+Plug 'lervag/vimtex' ", {'for': ['tex', 'latex', 'sty']}
+" let g:vimtex_compiler_latexmk = '-lualatex'
+Plug 'vim-pandoc/vim-pandoc'
 
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:ycm_rust_src_path = '/usr/local/src/rust/src'
+
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -65,6 +73,11 @@ let g:ranger_replace_netrw = 1
 Plug 'dag/vim-fish'
 
 call plug#end()
+
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 "Load pywal colors
 "colorscheme wal

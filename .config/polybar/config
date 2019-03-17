@@ -1,10 +1,10 @@
 [colors]
-background = ${xrdb:color8:#5b6474}
-foreground = ${xrdb:color15:#adb1b9}
-active = #8f7063
-inactive = #624d44
-highlight = ${xrdb:color2:#9c895e}
-error = ${xrdb:color9:#7c646c}
+background = ${xrdb:color8:#3e4d67}
+foreground = ${xrdb:color15:#9ea6b3}
+active = #344455
+inactive = #232f3a
+highlight = ${xrdb:color2:#7e2e55}
+error = ${xrdb:color9:#4d3f67}
 
 [bar/wpgtk]
 monitor = eDP
@@ -36,7 +36,7 @@ font-1 = FontAwesome:style=Regular:size=10;2
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right =  volume wlan eth battery
+modules-right =  volume battery
 
 tray-position = right
 tray-padding = 10
